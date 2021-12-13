@@ -29,8 +29,12 @@ Constraints:
 Only one valid answer exists.
 '''
 
-def twoSums(nums, target):
-   for i in range(len(nums)):
-       for j in range(i+1, len(nums)):
-           if nums[i] + nums[j] == target:
-               return [i, j]
+def twoSum(nums, target):
+    elems = {}
+    for index, num in enumerate(nums):
+        if target - num in elems:
+            return [elems[target-num], index]
+
+        elems[num] = index
+
+    return elems
